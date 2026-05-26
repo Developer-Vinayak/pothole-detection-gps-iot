@@ -1,0 +1,8 @@
+flask>=2.3
+opencv-python-headless>=4.8
+numpy>=1.24
+
+# Optional — needed only if using YOLOv8 TFLite model (best_int8.tflite)
+# Uncomment ONE of these depending on your platform:
+# tflite-runtime>=2.13       # Raspberry Pi / ARM (lighter)
+# tensorflow>=2.13           # x86 desktop / laptop (heavier)
