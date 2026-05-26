@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block title %}About — PotholeAI{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="hero">
+  <div class="hero-badge">🛰️ &nbsp; AI-Powered Road Monitoring</div>
+  <h1>Automated Pothole<br>Detection System</h1>
+  <p>A computer-vision system that identifies road damage in real-time and calculates the exact construction materials needed for repair.</p>
+</div>
+
+<div class="section">
+  <div class="section-title">What this project does</div>
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">🔍</div>
+      <h3>Real-Time Detection</h3>
+      <p>Analyses images from road cameras using a YOLOv8 INT8 TFLite model trained specifically on pothole imagery.</p>
+    </div>
+    <div class="card blue">
+      <div class="card-icon">📐</div>
+      <h3>Area Estimation</h3>
+      <p>Calculates physical pothole area in m² using pixel-to-metre calibration based on known road width.</p>
+    </div>
+    <div class="card green">
+      <div class="card-icon">🏗️</div>
+      <h3>Material Calculation</h3>
+      <p>Instantly computes cement, sand, and aggregate quantities needed for repair — eliminating manual estimation.</p>
+    </div>
+    <div class="card pink">
+      <div class="card-icon">🗺️</div>
+      <h3>GPS Mapping <span style="font-size:10px;background:rgba(244,114,182,0.2);padding:2px 7px;border-radius:8px;vertical-align:middle">SOON</span></h3>
+      <p>Future GPS integration will pin every detection on a live map, enabling city-wide road health monitoring.</p>
+    </div>
+  </div>
+
+  <div class="section-title">How it works</div>
+  <div class="timeline">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-content">
+        <h4>Image Capture & Upload</h4>
+        <p>A camera (dashcam, drone, fixed CCTV) sends images to the server via the <code>/api/detect</code> REST endpoint.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-content">
+        <h4>YOLOv8 Inference</h4>
+        <p>The image is resized to 160×160, normalised, and passed through the INT8 quantized YOLOv8 model. Output is 525 anchor boxes with confidence scores.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-content">
+        <h4>NMS Filtering</h4>
+        <p>Non-Maximum Suppression removes overlapping boxes. Only detections above the confidence threshold (0.45) are kept.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-content">
+        <h4>Repair Estimation</h4>
+        <p>Bounding box pixels → m² via road-width calibration. Volume at 8 cm depth → cement (350 kg/m³), sand (700 kg/m³), aggregate (1050 kg/m³).</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">05</div>
+      <div class="step-content">
+        <h4>Logging & Dashboard</h4>
+        <p>Results stored in SQLite. Admin dashboard shows annotated images, material totals, and detection history.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">Tech stack</div>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-val">Python</div><div class="stat-label">Backend</div></div>
+    <div class="stat"><div class="stat-val">Flask</div><div class="stat-label">Web Server</div></div>
+    <div class="stat"><div class="stat-val">YOLOv8</div><div class="stat-label">AI Model</div></div>
+    <div class="stat"><div class="stat-val">OpenCV</div><div class="stat-label">Vision</div></div>
+    <div class="stat"><div class="stat-val">SQLite</div><div class="stat-label">Database</div></div>
+  </div>
+
+  <div class="tags">
+    <span class="tag">YOLOv8 INT8</span>
+    <span class="tag">TFLite Runtime</span>
+    <span class="tag">NMS</span>
+    <span class="tag">Bounding Box Regression</span>
+    <span class="tag">OpenCV Fallback</span>
+    <span class="tag">RESTful API</span>
+    <span class="tag">Session Auth</span>
+    <span class="tag">Material Estimation</span>
+    <span class="tag">GPS Integration (Planned)</span>
+  </div>
+</div>
+
+<div style="max-width:960px;margin:0 auto;padding:0 32px">
+  <div class="footer">
+    <span>Built by <strong style="color:var(--accent)">Vinayak</strong> — Pothole Detection System</span>
+    <span>YOLOv8 · Flask · OpenCV</span>
+  </div>
+</div>
+{% endblock %}
