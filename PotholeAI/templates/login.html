@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Admin Login — PotholeAI{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock %}
+
+{% set show_nav = false %}
+
+{% block content %}
+<div class="grid-bg"></div>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+
+<div class="login-wrap">
+  <div class="brand">
+    <div class="brand-icon">🛣️</div>
+    <h1>Pothole Detection System</h1>
+    <p>Admin Control Panel</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Welcome back</div>
+    <div class="card-sub">Sign in to access the admin dashboard</div>
+
+    <div class="shield">🔒&nbsp; Secure admin access only</div>
+
+    {% if error %}
+    <div class="error-msg">⚠️ {{ error }}</div>
+    {% endif %}
+
+    <form method="POST" action="{{ url_for('auth.login') }}">
+      <div class="field">
+        <label>Admin ID</label>
+        <div class="input-wrap">
+          <span class="icon">👤</span>
+          <input type="text" name="admin_id" placeholder="Enter your admin ID"
+                 required autocomplete="username">
+        </div>
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <div class="input-wrap">
+          <span class="icon">🔑</span>
+          <input type="password" name="password" placeholder="Enter your password"
+                 required autocomplete="current-password">
+        </div>
+      </div>
+      <button type="submit" class="btn-login">Sign In →</button>
+    </form>
+
+    <div class="footer-note">
+      Learn about this project → <a href="{{ url_for('about.index') }}">About page</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

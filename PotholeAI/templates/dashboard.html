@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — PotholeAI{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="stats">
+  <div class="stat-card">
+    <div class="stat-label">Total Detections</div>
+    <div class="stat-value" id="s-total">—</div>
+  </div>
+  <div class="stat-card blue">
+    <div class="stat-label">Total Area</div>
+    <div class="stat-value blue" id="s-area">—</div>
+  </div>
+  <div class="stat-card green">
+    <div class="stat-label">Avg Confidence</div>
+    <div class="stat-value green" id="s-conf">—</div>
+  </div>
+  <div class="stat-card pink">
+    <div class="stat-label">Last Detection</div>
+    <div class="stat-value pink" id="s-last">—</div>
+  </div>
+</div>
+
+<div class="mat-bar">
+  <span class="mat-bar-title">Total Materials Needed</span>
+  <div class="mat-item"><span>🏗️</span><span class="l">Cement:</span><span class="v" id="m-cement">—</span><span class="l">kg</span></div>
+  <div class="mat-item"><span>🪨</span><span class="l">Sand:</span><span class="v" id="m-sand">—</span><span class="l">kg</span></div>
+  <div class="mat-item"><span>⚫</span><span class="l">Aggregate:</span><span class="v" id="m-agg">—</span><span class="l">kg</span></div>
+</div>
+
+<div class="main">
+  <div class="sidebar">
+    <div class="sb-header">
+      Detection Log
+      <button class="rfbtn" onclick="loadData()">↻ Refresh</button>
+    </div>
+    <div id="det-list">
+      <div class="empty"><div class="empty-icon">🕳️</div><div class="empty-text">No detections yet</div></div>
+    </div>
+  </div>
+  <div id="img-panel">
+    <div class="empty"><div class="empty-icon">📷</div><div class="empty-text">Select a detection to view its annotated image</div></div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

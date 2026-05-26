@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block title %}Pothole Map — PotholeAI{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/map.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<!-- Page header -->
+<div class="map-header">
+  <div class="map-header-left">
+    <h2 class="map-title">🗺️ Pothole Location Map</h2>
+    <p class="map-sub">Real-time geographic distribution of detected potholes</p>
+  </div>
+  <div class="map-header-right">
+    <div class="gps-badge">
+      <span class="gps-dot"></span>
+      GPS Integration — <strong>Coming Soon</strong>
+    </div>
+    <div class="map-stats-row">
+      <div class="ms"><span id="mp-count">0</span><small>Mapped</small></div>
+      <div class="ms"><span id="mp-total">0</span><small>Total</small></div>
+    </div>
+  </div>
+</div>
+
+<!-- Map + sidebar layout -->
+<div class="map-layout">
+
+  <!-- Left: map -->
+  <div class="map-container">
+    <div id="leaflet-map"></div>
+
+    <!-- Future GPS overlay -->
+    <div class="gps-overlay">
+      <div class="gps-overlay-inner">
+        <div class="gps-icon">📡</div>
+        <h3>GPS Module — Future Feature</h3>
+        <p>
+          When a GPS sensor is connected to the detection device,
+          each pothole will be automatically pinned on this map
+          with its exact coordinates, confidence score, and repair estimate.
+        </p>
+        <div class="gps-chips">
+          <span class="chip">📍 Auto-pin on detection</span>
+          <span class="chip">📊 Repair cost overlay</span>
+          <span class="chip">🛣️ Road segment heatmap</span>
+          <span class="chip">📤 Export to CSV / KML</span>
+        </div>
+        <div class="gps-progress">
+          <div class="progress-label">Development progress</div>
+          <div class="progress-bar"><div class="progress-fill" style="width:35%"></div></div>
+          <div class="progress-pct">35%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: detection list -->
+  <div class="map-sidebar">
+    <div class="msb-header">
+      <span>Detection Log</span>
+      <span id="ms-count" class="ms-badge">0 entries</span>
+    </div>
+    <div id="map-det-list">
+      <div class="map-empty">
+        <div>📭</div>
+        <div>No detections with GPS data yet</div>
+        <div style="font-size:11px;margin-top:6px;color:#2a3d5a">GPS module coming soon</div>
+      </div>
+    </div>
+
+    <!-- Demo pins panel -->
+    <div class="demo-panel">
+      <div class="demo-title">🧪 Demo Mode</div>
+      <p class="demo-sub">Add sample pins to preview the map interface</p>
+      <button class="demo-btn" onclick="loadDemoPins()">Load Demo Pins</button>
+      <button class="demo-btn secondary" onclick="clearDemoPins()">Clear</button>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="{{ url_for('static', filename='js/map.js') }}"></script>
+{% endblock %}

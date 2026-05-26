@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>{% block title %}PotholeAI{% endblock %}</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+{% block head %}{% endblock %}
+</head>
+<body>
+
+{% if show_nav != false %}
+<nav class="nav">
+  <div class="nav-left">
+    <div class="nav-logo">🛣️</div>
+    <div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span class="nav-title">PotholeAI</span>
+        {% if session.get('logged_in') %}
+        <div class="status-dot"></div>
+        <span style="font-size:11px;color:#22c55e">Live</span>
+        <span id="engine-badge" class="engine-badge">...</span>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="nav-links">
+    {% if session.get('logged_in') %}
+    <a href="{{ url_for('dashboard.index') }}"
+       class="nav-link {% if request.endpoint == 'dashboard.index' %}active{% endif %}">Dashboard</a>
+    <a href="{{ url_for('map.index') }}"
+       class="nav-link {% if request.endpoint == 'map.index' %}active{% endif %}">🗺️ Map</a>
+    <a href="{{ url_for('about.index') }}"
+       class="nav-link {% if request.endpoint == 'about.index' %}active{% endif %}">About</a>
+    <div class="nav-divider"></div>
+    <div class="admin-badge">👤 {{ session.get('admin_id', 'Admin') }}</div>
+    <a href="{{ url_for('auth.logout') }}" class="logout-btn">Logout</a>
+    {% else %}
+    <a href="{{ url_for('about.index') }}"
+       class="nav-link {% if request.endpoint == 'about.index' %}active{% endif %}">About</a>
+    <a href="{{ url_for('auth.login') }}" class="nav-btn">Admin Login →</a>
+    {% endif %}
+  </div>
+</nav>
+{% endif %}
+
+{% block content %}{% endblock %}
+{% block scripts %}{% endblock %}
+
+{% if session.get('logged_in') %}
+<script>
+async function updateEngineBadge(){
+  try{
+    const r  = await fetch('/api/status');
+    const s  = await r.json();
+    const eb = document.getElementById('engine-badge');
+    if(!eb) return;
+    if(s.engine === 'tflite'){
+      eb.textContent = '🤖 YOLOv8 INT8';
+      eb.style.cssText += ';background:rgba(74,222,128,.1);color:#4ade80;border-color:rgba(74,222,128,.25)';
+    } else {
+      eb.textContent = '🔷 OpenCV';
+      eb.style.cssText += ';background:rgba(56,189,248,.1);color:#38bdf8;border-color:rgba(56,189,248,.2)';
+    }
+  } catch(e){}
+}
+updateEngineBadge();
+</script>
+{% endif %}
+
+</body>
+</html>
