@@ -255,8 +255,8 @@ Integration with government road-maintenance portals (PMGSY / Smart Cities Missi
 Mobile app for citizen reporting that feeds the same backend
 ---
 🧑‍💻 Team & Acknowledgements
-Developer: Vinayak
-Institution: [Your College Name]
+Developer: Vinayak Mishra
+Institution: GLA University
 Domain: Internet of Things · Computer Vision · Web Systems
 We extend our gratitude to Dr. Anjan Kumar for bringing the Silicon Labs Centre of Innovation IoT Challenge to our attention, and to the Silicon Labs team for creating a platform where student prototypes receive the recognition — and the career opportunities — they deserve.
 ---
