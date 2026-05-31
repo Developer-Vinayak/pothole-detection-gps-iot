@@ -258,7 +258,7 @@ Mobile app for citizen reporting that feeds the same backend
 Developer: Vinayak Mishra
 Institution: GLA University
 Domain: Internet of Things · Computer Vision · Web Systems
-We extend our gratitude to Dr. Anjan Kumar for bringing the Silicon Labs Centre of Innovation IoT Challenge to our attention, and to the Silicon Labs team for creating a platform where student prototypes receive the recognition — and the career opportunities — they deserve.
+We extend our gratitude to Dr. Anjan Kumar for bringing the Silicon Labs Centre of Innovation IoT Challenge to our attention, and to the Silicon Labs team for creating a platform where student prototypes receive the recognition — and the career opportunities.
 ---
 📎 Submission Checklist (Silicon Labs COI)
 [x] Project Overview & Problem Statement
