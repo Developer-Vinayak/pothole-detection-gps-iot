@@ -35,7 +35,7 @@ Secure the administrative interface with role-based authentication while keeping
 🏗️ System Architecture
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│                        PotholeAI — System Flow                       │
+│                        PotholeAI — System Flow                      |
 └─────────────────────────────────────────────────────────────────────┘
 
   ┌──────────────┐        JPEG over Wi-Fi          ┌──────────────────┐
