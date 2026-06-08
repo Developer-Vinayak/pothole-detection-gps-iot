@@ -32,7 +32,7 @@ Automatically resolve geographic coordinates from the device's Wi-Fi/IP signal �
 Present all detections on a live, filterable map dashboard accessible to road-maintenance administrators
 Secure the administrative interface with role-based authentication while keeping the device endpoint completely open (so the ESP32-CAM never needs a login)
 ---
-🏗️ System Architecture
+🏗️  System Architecture
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
 │                        PotholeAI — System Flow                      |
