@@ -271,7 +271,7 @@ We extend our gratitude to Dr. Anjan Kumar for bringing the Silicon Labs Centre 
 [x] Working hardware prototype (ESP32-CAM)
 [x] Repository structure and documentation
 ---
-📄 License
+📄 License 
 This project is submitted under the MIT License.
 Free to use, study, adapt, and build upon — with attribution.
 ---
