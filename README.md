@@ -1,7 +1,7 @@
 # pothole-detection-gps-iot
 IoT-based smart pothole detection system using accelerometer &amp; GPS that auto-reports road damage on a live web dashboard. Built for Silicon Labs Centre of Innovation in IoT Challenge.
 
-🛣️ PotholeAI — Real-Time Pothole Detection & Road Intelligence System
+🛣️PotholeAI — Real-Time Pothole Detection & Road Intelligence System
 > *"Every broken road tells a story of neglect. This project makes sure that story is heard — automatically, precisely, and in real time."*
 ![Silicon Labs COI](https://img.shields.io/badge/Silicon%20Labs-COI%20IoT%20Challenge-blue?style=for-the-badge)
 ![Flask](https://img.shields.io/badge/Flask-2.3-black?style=for-the-badge&logo=flask)
