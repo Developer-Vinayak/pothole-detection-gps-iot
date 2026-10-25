@@ -16,6 +16,7 @@ India's road network — the second largest in the world — loses an estimated 
 PotholeAI is a low-cost, autonomous IoT system that transforms an ordinary ESP32-CAM module into an intelligent road-inspection device. Mounted on a vehicle, it continuously captures road imagery, transmits frames over Wi-Fi to an edge server running a YOLOv8 deep learning model, and — in real time — detects potholes, calculates the exact volume of material needed for repair, tags each detection with a geographic location, and plots it on a live administrative map. No human required.
 This is not a proof-of-concept sketch. It is a working prototype with functioning hardware and a fully deployed web platform, built end-to-end by a student team as a submission for the Silicon Labs Centre of Innovation IoT Challenge.
 ---
+
 ❓ Problem Statement
 Aspect	Current Reality
 Detection method	Manual patrolling and citizen complaints
@@ -26,6 +27,7 @@ Geographic logging	Rarely done; paper-based or absent
 Cost	High — every surveyor-hour is a liability
 PotholeAI addresses every row of that table simultaneously.
 ---
+
 🎯 Objectives
 Deploy an ESP32-CAM as a mobile, wireless road-scanning sensor
 Run YOLOv8 INT8 inference on an edge server for real-time pothole classification
